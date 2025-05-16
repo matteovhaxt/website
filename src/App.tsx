@@ -7,9 +7,14 @@ import { Label } from './components/ui/label'
 import { Textarea } from './components/ui/textarea'
 import { Separator } from './components/ui/separator'
 import { Badge } from './components/ui/badge'
+import { ThemeToggle } from './components/theme-toggle'
 
 export default function App() {
   return (
+    <>
+    <div className='fixed top-4 right-4'>
+      <ThemeToggle />
+    </div>
     <div className='flex flex-col items-center justify-center gap-8 py-24'>
       <section className='w-1/2'>
         <div className='flex items-center justify-start w-full gap-4'>
@@ -209,5 +214,6 @@ export default function App() {
           </Card>
       </section>
     </div>
+    </>
   )
 }
