@@ -1,10 +1,15 @@
+import { createFileRoute } from '@tanstack/react-router'
 import { ExternalLink, Github, Linkedin, Mail, Twitter } from 'lucide-react'
-import { Avatar, AvatarFallback, AvatarImage } from './components/ui/avatar'
-import { Button } from './components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card'
-import { Badge } from './components/ui/badge'
-import { ThemeToggle } from './components/theme-toggle'
-import { Separator } from './components/ui/separator'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Separator } from '@/components/ui/separator'
+
+export const Route = createFileRoute('/')({
+  component: Index,
+})
 
 const socials = [
   {
@@ -80,7 +85,7 @@ const education = [
   }
 ]
 
-export default function App() {
+export default function Index() {
   return (
     <>
     <div className='fixed top-4 right-4'>
@@ -91,7 +96,7 @@ export default function App() {
         <div className='flex flex-col md:flex-row items-center justify-start w-full gap-4 md:gap-8'>
           <Avatar className='w-32 h-32 md:w-48 md:h-48'>
             <AvatarImage src={'/portrait.png'} />
-            <AvatarFallback>CN</AvatarFallback>
+            <AvatarFallback>MVH</AvatarFallback>
           </Avatar>
           <div className='flex flex-col gap-2'>
             <h1 className='text-2xl font-bold'>Matteo von Haxthausen</h1>
@@ -173,7 +178,7 @@ export default function App() {
                   <div key={work.company} className='flex flex-col md:flex-row items-start md:items-center justify-start gap-4'>
                     <Avatar className='w-12 h-12'>
                       <AvatarImage src={work.image} />
-                      <AvatarFallback>CN</AvatarFallback>
+                      <AvatarFallback>IMG</AvatarFallback>
                     </Avatar>
                     <div className='flex-1 flex flex-col gap-2'>
                       <CardTitle>{work.role}</CardTitle>
@@ -198,7 +203,7 @@ export default function App() {
                   <div key={education.school} className='flex flex-col md:flex-row items-start md:items-center justify-start gap-4'>
                     <Avatar className='w-12 h-12'>
                       <AvatarImage src={education.image} />
-                      <AvatarFallback>CN</AvatarFallback>
+                      <AvatarFallback>IMG</AvatarFallback>
                     </Avatar>
                     <div className='flex-1 flex flex-col gap-2'>
                       <CardTitle>{education.school}</CardTitle>
