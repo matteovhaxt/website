@@ -2,6 +2,8 @@ import { StrictMode } from 'react'
 import { ThemeProvider } from "@/components/theme-provider"
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
+import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from '@vercel/analytics/react'
 import './index.css'
 
 import { routeTree } from './routeTree.gen'
@@ -21,6 +23,8 @@ if (!rootElement.innerHTML) {
     <StrictMode>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <RouterProvider router={router} />
+        <SpeedInsights />
+        <Analytics />
       </ThemeProvider>
     </StrictMode>,
   )
