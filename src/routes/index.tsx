@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink, Github, Linkedin, Mail, Twitter } from "lucide-react";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -93,188 +92,137 @@ const education = [
 
 export default function Index() {
 	return (
-		<>
-			<div className="fixed top-4 right-4">
-				<ThemeToggle />
-			</div>
-			<div className="flex flex-col items-center justify-center gap-8 py-24 px-4">
-				<section className="w-full md:w-1/2">
-					<div className="flex flex-col md:flex-row items-center justify-start w-full gap-4 md:gap-8">
-						<Avatar className="w-32 h-32 md:w-48 md:h-48">
-							<AvatarImage src={"/portrait.png"} />
-							<AvatarFallback>MVH</AvatarFallback>
-						</Avatar>
-						<div className="flex flex-col gap-2">
-							<h1 className="text-2xl font-bold">Matteo von Haxthausen</h1>
-							<p className="text-lg text-gray-500">
-								Software Engineer based in Berlin
-							</p>
-							<div className="flex items-center justify-center md:justify-start gap-2">
-								{socials.map((social) => (
+		<div className="container mx-auto flex flex-col items-center gap-16 py-16 px-4">
+			<section className="flex flex-col items-center text-center gap-4">
+				<Avatar className="w-32 h-32 md:w-48 md:h-48">
+					<AvatarImage src={"/portrait.png"} />
+					<AvatarFallback>MVH</AvatarFallback>
+				</Avatar>
+				<h1 className="text-3xl font-bold">Matteo von Haxthausen</h1>
+				<p className="text-lg text-gray-500">
+					Software Engineer based in Berlin
+				</p>
+				<div className="flex gap-2">
+					{socials.map((social) => (
+						<Button
+							key={social.name}
+							variant="ghost"
+							size="icon"
+							onClick={() => window.open(social.link, "_blank")}
+						>
+							<social.icon className="w-4 h-4" />
+						</Button>
+					))}
+				</div>
+			</section>
+			<section className="w-full max-w-2xl">
+				<Card>
+					<CardHeader>
+						<CardTitle>Projects</CardTitle>
+					</CardHeader>
+					<CardContent className="flex flex-col gap-4">
+						{projects.map((project) => (
+							<div
+								key={project.title}
+								className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+							>
+								<div className="flex-1 flex flex-col gap-2">
+									<CardTitle className="text-lg">{project.title}</CardTitle>
+									<CardDescription>{project.description}</CardDescription>
+								</div>
+								<div className="flex gap-2">
 									<Button
-										key={social.name}
 										variant="ghost"
 										size="icon"
-										onClick={() => window.open(social.link, "_blank")}
+										onClick={() => window.open(project.link, "_blank")}
 									>
-										<social.icon className="w-4 h-4" />
+										<ExternalLink className="w-4 h-4" />
 									</Button>
-								))}
-							</div>
-						</div>
-					</div>
-				</section>
-				<section className="w-full md:w-1/2">
-					<Card className="w-full">
-						<CardHeader>
-							<CardTitle>About</CardTitle>
-							<CardDescription>
-								Hey there! I'm Matteo, a software engineer based in Berlin.{" "}
-								<br />I am passionate about building cool stuff and learning new
-								things. <br />
-								Currently exploring everything AI and building my own projects.{" "}
-								<br />
-								Hit me up if you want to chat!
-							</CardDescription>
-						</CardHeader>
-					</Card>
-				</section>
-				<section className="w-full md:w-1/2">
-					<Card className="w-full">
-						<CardHeader>
-							<CardTitle>Projects</CardTitle>
-						</CardHeader>
-						<CardContent className="flex flex-col gap-4">
-							{projects.map((project, index) => (
-								<div key={project.title} className="flex flex-col gap-4">
-									{index > 0 && <Separator />}
-									<div
-										key={project.title}
-										className="flex flex-col md:flex-row items-start md:items-center justify-center gap-4"
+									<Button
+										variant="ghost"
+										size="icon"
+										onClick={() => window.open(project.github, "_blank")}
 									>
-										<div className="flex-1 flex flex-col gap-2">
-											<CardTitle>{project.title}</CardTitle>
-											<CardDescription>{project.description}</CardDescription>
-										</div>
-										<div className="flex items-center justify-center gap-2">
-											<Button
-												variant="ghost"
-												size="icon"
-												onClick={() => window.open(project.link, "_blank")}
-											>
-												<ExternalLink className="w-4 h-4" />
-											</Button>
-											<Button
-												variant="ghost"
-												size="icon"
-												onClick={() => window.open(project.github, "_blank")}
-											>
-												<Github className="w-4 h-4" />
-											</Button>
-										</div>
-									</div>
+										<Github className="w-4 h-4" />
+									</Button>
 								</div>
-							))}
-						</CardContent>
-					</Card>
-				</section>
-				<section className="w-full md:w-1/2">
-					<Card className="w-full">
-						<CardHeader>
-							<CardTitle>Skills</CardTitle>
-						</CardHeader>
-						<CardContent className="flex flex-wrap gap-2">
-							{[
-								"React",
-								"Next.js",
-								"Tailwind CSS",
-								"TypeScript",
-								"Node.js",
-								"PostgreSQL",
-								"Docker",
-							].map((skill) => (
+							</div>
+						))}
+					</CardContent>
+				</Card>
+			</section>
+			<section className="w-full max-w-2xl">
+				<Card>
+					<CardHeader>
+						<CardTitle>Skills</CardTitle>
+					</CardHeader>
+					<CardContent className="flex flex-wrap gap-2">
+						{"React,Next.js,Tailwind CSS,TypeScript,Node.js,PostgreSQL,Docker"
+							.split(",")
+							.map((skill) => (
 								<Badge key={skill}>
 									<p>{skill}</p>
 								</Badge>
 							))}
-						</CardContent>
-					</Card>
-				</section>
-				<section className="w-full md:w-1/2">
-					<Card className="w-full">
-						<CardHeader>
-							<CardTitle>Work</CardTitle>
-						</CardHeader>
-						<CardContent className="flex flex-col gap-4">
-							{work.map((work, index) => (
-								<div key={work.company} className="flex flex-col gap-4">
-									{index > 0 && <Separator />}
-									<div
-										key={work.company}
-										className="flex flex-col md:flex-row items-start md:items-center justify-start gap-4"
-									>
+					</CardContent>
+				</Card>
+			</section>
+			<section className="w-full max-w-2xl">
+				<Card>
+					<CardHeader>
+						<CardTitle>Work</CardTitle>
+					</CardHeader>
+					<CardContent className="flex flex-col gap-4">
+						{work.map((work, index) => (
+							<div key={work.company} className="flex flex-col gap-4">
+								{index > 0 && <Separator />}
+								<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+									<div className="flex items-center gap-4">
 										<Avatar className="w-12 h-12">
 											<AvatarImage src={work.image} />
 											<AvatarFallback>IMG</AvatarFallback>
 										</Avatar>
-										<div className="flex-1 flex flex-col gap-2">
-											<CardTitle>{work.role}</CardTitle>
+										<div className="flex flex-col gap-1">
+											<CardTitle className="text-lg">{work.role}</CardTitle>
 											<CardDescription>{work.company}</CardDescription>
 										</div>
-										<p className="text-sm text-gray-500">{work.timeframe}</p>
 									</div>
+									<p className="text-sm text-gray-500">{work.timeframe}</p>
 								</div>
-							))}
-						</CardContent>
-					</Card>
-				</section>
-				<section className="w-full md:w-1/2">
-					<Card className="w-full">
-						<CardHeader>
-							<CardTitle>Education</CardTitle>
-						</CardHeader>
-						<CardContent className="flex flex-col gap-4">
-							{education.map((education, index) => (
-								<div key={education.school} className="flex flex-col gap-4">
-									{index > 0 && <Separator />}
-									<div
-										key={education.school}
-										className="flex flex-col md:flex-row items-start md:items-center justify-start gap-4"
-									>
+							</div>
+						))}
+					</CardContent>
+				</Card>
+			</section>
+			<section className="w-full max-w-2xl">
+				<Card>
+					<CardHeader>
+						<CardTitle>Education</CardTitle>
+					</CardHeader>
+					<CardContent className="flex flex-col gap-4">
+						{education.map((education, index) => (
+							<div key={education.school} className="flex flex-col gap-4">
+								{index > 0 && <Separator />}
+								<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+									<div className="flex items-center gap-4">
 										<Avatar className="w-12 h-12">
 											<AvatarImage src={education.image} />
 											<AvatarFallback>IMG</AvatarFallback>
 										</Avatar>
-										<div className="flex-1 flex flex-col gap-2">
-											<CardTitle>{education.school}</CardTitle>
+										<div className="flex flex-col gap-1">
+											<CardTitle className="text-lg">
+												{education.school}
+											</CardTitle>
 											<CardDescription>{education.degree}</CardDescription>
 										</div>
-										<p className="text-sm text-gray-500">
-											{education.timeframe}
-										</p>
 									</div>
+									<p className="text-sm text-gray-500">{education.timeframe}</p>
 								</div>
-							))}
-						</CardContent>
-					</Card>
-				</section>
-				{/* <section className='w-1/2'>
-        <Card className='w-full'>
-            <CardHeader>
-              <CardTitle>Contact</CardTitle>
-            </CardHeader>
-            <CardContent className='flex flex-col gap-4'>
-              <Label>Email</Label>
-              <Input placeholder='Email' />
-              <Label>Message</Label>
-              <Textarea placeholder='Message' />
-            </CardContent>
-            <CardFooter>
-              <Button>Card Button</Button>
-            </CardFooter>
-          </Card>
-      </section> */}
-			</div>
-		</>
+							</div>
+						))}
+					</CardContent>
+				</Card>
+			</section>
+		</div>
 	);
 }
