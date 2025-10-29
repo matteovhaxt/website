@@ -42,6 +42,11 @@ const socials = [
 
 const projects = [
 	{
+		title: "gpu-radar.com",
+		description: "Discover the best GPUs on the market",
+		link: "https://gpu-radar.com",
+	},
+	{
 		title: "my-model-context",
 		description: "CLI to smootly manage local MCP configurations.",
 		link: "https://www.npmjs.com/package/my-model-context",
@@ -50,6 +55,18 @@ const projects = [
 ];
 
 const work = [
+	{
+		company: "The Sandbox",
+		role: "Fellow",
+		image: "sandbox-logo.webp",
+		timeframe: "Aug 2025 - Present",
+	},
+	{
+		company: "Exalsius",
+		role: "Full-stack Developer",
+		image: "exalsius-logo.webp",
+		timeframe: "Jun 2025 - Present",
+	},
 	{
 		company: "LLM Studios",
 		role: "Co-Founder & CTO",
@@ -164,13 +181,15 @@ export default function Index() {
 											>
 												<ExternalLink className="w-4 h-4" />
 											</Button>
-											<Button
-												variant="ghost"
-												size="icon"
-												onClick={() => window.open(project.github, "_blank")}
-											>
-												<Github className="w-4 h-4" />
-											</Button>
+											{project.github ? (
+												<Button
+													variant="ghost"
+													size="icon"
+													onClick={() => window.open(project.github, "_blank")}
+												>
+													<Github className="w-4 h-4" />
+												</Button>
+											) : null}
 										</div>
 									</div>
 								</div>
@@ -192,6 +211,8 @@ export default function Index() {
 								"Node.js",
 								"PostgreSQL",
 								"Docker",
+								"React Native",
+								"Expo",
 							].map((skill) => (
 								<Badge key={skill}>
 									<p>{skill}</p>
