@@ -42,15 +42,14 @@ const socials = [
 
 const projects = [
 	{
+		title: "dawg.watch",
+		description: "Monitor your Claude Code usage",
+		link: "https://dawg.watch",
+	},
+	{
 		title: "gpu-radar.com",
 		description: "Discover the best GPUs on the market",
 		link: "https://gpu-radar.com",
-	},
-	{
-		title: "my-model-context",
-		description: "CLI to smootly manage local MCP configurations.",
-		link: "https://www.npmjs.com/package/my-model-context",
-		github: "https://github.com/matteovhaxt/my-model-context",
 	},
 ];
 
@@ -59,13 +58,13 @@ const work = [
 		company: "The Sandbox",
 		role: "Fellow",
 		image: "sandbox-logo.webp",
-		timeframe: "Aug 2025 - Present",
+		timeframe: "Aug 2025 - Dec 2025",
 	},
 	{
 		company: "Exalsius",
-		role: "Full-stack Developer",
+		role: "Full Stack Developer",
 		image: "exalsius-logo.webp",
-		timeframe: "Jun 2025 - Present",
+		timeframe: "Jun 2025 - Dec 2025",
 	},
 	{
 		company: "LLM Studios",
@@ -181,11 +180,11 @@ export default function Index() {
 											>
 												<ExternalLink className="w-4 h-4" />
 											</Button>
-											{project.github ? (
+											{project.link ? (
 												<Button
 													variant="ghost"
 													size="icon"
-													onClick={() => window.open(project.github, "_blank")}
+													onClick={() => window.open(project.link, "_blank")}
 												>
 													<Github className="w-4 h-4" />
 												</Button>
