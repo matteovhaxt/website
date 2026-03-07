@@ -42,9 +42,9 @@ const socials = [
 
 const projects = [
 	{
-		title: "dawg.watch",
+		title: "neun.sh",
 		description: "Monitor your Claude Code usage",
-		link: "https://dawg.watch",
+		link: "https://neun.sh",
 	},
 	{
 		title: "gpu-radar.com",
